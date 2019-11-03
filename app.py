@@ -2,8 +2,8 @@
 import base64
 
 from flask import Flask, jsonify, render_template, request, flash
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
+# from flask_limiter import Limiter
+# from flask_limiter.util import get_remote_address
 from werkzeug.utils import secure_filename
 
 import innvestigate
@@ -23,11 +23,11 @@ from keras.models import Model
 
 app = Flask(__name__)
 # Limit number of requests
-limiter = Limiter(
-    app,
-    key_func=get_remote_address,
-    default_limits=["150 per day", "30 per hour"]
-)
+# limiter = Limiter(
+#     app,
+#     key_func=get_remote_address,
+#     default_limits=["150 per day", "30 per hour"]
+# )
 # 1 Mb maximum file upload allowed
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
 
