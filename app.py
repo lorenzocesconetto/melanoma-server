@@ -21,15 +21,15 @@ from keras.layers import Dense, Dropout, BatchNormalization
 from keras.models import Model
 
 
-application = Flask(__name__)
+app = Flask(__name__)
 # Limit number of requests
 limiter = Limiter(
-    application,
+    app,
     key_func=get_remote_address,
     default_limits=["150 per day", "30 per hour"]
 )
 # 1 Mb maximum file upload allowed
-application.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
 
 ############################################################
 # Constants
@@ -82,13 +82,13 @@ def allowed_file(filename: str):
 # Routes
 ############################################################
 # Error too big files
-@application.errorhandler(413)
+@app.errorhandler(413)
 def request_entity_too_large(error):
 	return render_template("index.html", error_msg='File too big. Max size is 1 Mb.')
     # return 'File Too Large', 413
 
 # Main page
-@application.route("/", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def index():
 	if request.method == 'GET':
 		return render_template("index.html")
@@ -165,9 +165,9 @@ def index():
 	return render_template("index.html", error_msg='Not allowed file type. Only PNG and JPG are accepted.')
 
 
-@application.route("/terms", methods=['GET', 'POST'])
+@app.route("/terms", methods=['GET', 'POST'])
 def terms():
 	return render_template("terms.html")
 
 if __name__ == '__main__':
-	application.run(host='0.0.0.0', port=8000)
+	app.run(host='0.0.0.0', port=8000)
