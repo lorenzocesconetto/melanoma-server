@@ -58,7 +58,7 @@ graph = tf.get_default_graph()
 # NN_MODEL.load_weights('./weights_VGG_v7_auc_0.901.h5')
 
 ############################################################
-NN_MODEL = keras.applications.models.load_model('model_VGG_v7_auc_0.901.h5')
+NN_MODEL = keras.applications.models.load_model('model_VGG_v7_auc_0.901.h5', compile=False)
 
 ############################################################
 # Helper function
