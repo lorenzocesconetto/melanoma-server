@@ -30,6 +30,7 @@ app = Flask(__name__)
 # )
 # 1 Mb maximum file upload allowed
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
+app.config['PROPAGATE_EXCEPTIONS'] = True
 
 ############################################################
 # Constants

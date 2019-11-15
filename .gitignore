@@ -1,2 +1,6 @@
 *.h5
 *.DS_Store
+melanoma.key
+melanoma.csr
+__pycache__
+__pycache__/*
